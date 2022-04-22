@@ -42,5 +42,6 @@
             </tbody>
             @endforeach
     </table>
-  </a>
+<a name="logout" id="" class="btn btn-primary" href="{{route('logout')}}" role="button">Logout</a>
+
 </html>

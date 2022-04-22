@@ -9,6 +9,14 @@ class productController extends Controller
 {
     public function index()
     {
+        if(session()->has('email')){
+            $products=product::all();
+            $data=compact('products');
+             return view('products')->with($data);
+        }
+        else{
+            return redirect('/');
+        }
        $products=product::all();
        $data=compact('products');
         return view('products')->with($data);
@@ -29,13 +37,13 @@ class productController extends Controller
 
        
         $product->save();
-        return redirect('/');
+        return redirect('/dashboard');
     }
     public function delete($id)
     {
         $product=product::find($id);
         $product->delete();
-        return redirect('/');
+        return redirect('/dashboard');
     }
  
     public function edit($id)
@@ -52,7 +60,7 @@ class productController extends Controller
         $product->price=$request['price'];
         $product->discount=$request['discount'];
         $product->save();
-        return redirect('/');
+        return redirect('/dashboard');
     }
   
    
