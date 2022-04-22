@@ -15,7 +15,8 @@ class userController extends Controller
               return redirect('/dashboard');
          }
          else{
-              return redirect('/');
+             $error="Invalid Email or Password";
+             return redirect()->back()->with('success',$error);
          }
     //    echo '<pre.>';
     //    print_r($user);
